@@ -1,3 +1,4 @@
+import config from '../../config.js';
 import HostipWebSocket from "../websocket/host-ip-websocket.js"
 import ForwardedRequestMessage from "../messages/forwarded-request-message.js"
 import http from 'http';
@@ -12,7 +13,7 @@ export default async function forwardedRequest(forwardedRequestMessage: Forwarde
 
     // @todo: Once GET is working, add support for all HTTP methods
     const requestOptions : http.RequestOptions = {
-        hostname: 'localhost',
+        hostname: config.hostip.upstream,
         method: forwardedRequestMessage.method,
         port: port,
         path: url,

@@ -1,17 +1,12 @@
-import instanceConfig from "./config-instance.js";
-import deepmerge from 'deepmerge';
-
-const baseConfig = {
+const config = {
     hostip: {
-        endpoint: "service.tunnelmole.com",
-        port: "80"
+        endpoint: process.env.TUNNEL_ENDPOINT || "service.tunnelmole.com",
+        httpEndpoint: process.env.TUNNEL_HTTP_ENDPOINT || "80",
+        upstream: process.env.TUNNEL_UPSTREAM || "localhost",
     },
     runtime: {
         enableLogging: true
-    }    
+    }
 }
-
-
-const config = deepmerge(baseConfig, instanceConfig);
 
 export default config;
